@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_100943) do
+ActiveRecord::Schema.define(version: 2022_07_18_103342) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "system_requirements", force: :cascade do |t|
+    t.string "name"
+    t.string "operational_system"
+    t.string "storage"
+    t.string "processor"
+    t.string "memory"
+    t.string "video_board"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
