@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_18_105604) do
+ActiveRecord::Schema.define(version: 2022_07_19_114441) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "mode"
+    t.datetime "release_date"
+    t.string "developer"
+    t.integer "system_requirement_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["system_requirement_id"], name: "index_games_on_system_requirement_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -64,4 +74,5 @@ ActiveRecord::Schema.define(version: 2022_07_18_105604) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "games", "system_requirements"
 end
